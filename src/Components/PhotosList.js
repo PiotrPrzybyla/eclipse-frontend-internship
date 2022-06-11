@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Photo from "./Photo";
+import Loading from "./Loading";
 
 function PhotosList() {
 	useEffect(() => {
@@ -15,7 +16,9 @@ function PhotosList() {
 			)
 			.then((res) => {
 				setPhotos(res.data);
-				setIsLoaded(true);
+				setTimeout(() => {
+					setIsLoaded(true);
+				}, 2000);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -37,7 +40,7 @@ function PhotosList() {
 				})}
 			</div>
 		);
-	else return <div>Loading</div>;
+	else return <Loading></Loading>;
 }
 
 export default PhotosList;
