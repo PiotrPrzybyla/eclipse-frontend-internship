@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Photo from "./Components/Photo";
+import PhotosList from "./Components/PhotosList";
 
 function App() {
-	return <Photo></Photo>;
+	return <PhotosList></PhotosList>;
 }
 
 export default App;

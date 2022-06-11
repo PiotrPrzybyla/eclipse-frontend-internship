@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
-function Photo() {
-	useEffect(() => {
-		fetchPhotos();
-	}, []);
-	const [photos, setPhotos] = useState([]);
-	const [isLoaded, setIsLoaded] = useState(false);
-	function fetchPhotos() {
-		axios
-			.get(
-				"https://api.unsplash.com/photos?client_id=z57ZXwyPe2AbNMh4yvHoT6IZXVNny3tCDnCGB7KzuLI"
-			)
-			.then((res) => {
-				setPhotos(res.data);
-				setIsLoaded(true);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}
-	if (isLoaded)
-		return (
-			<div>
-				<img src={photos[0].urls.full} alt="" />
-			</div>
-		);
-	else return <div>Loading</div>;
+function Photo(props) {
+	return (
+		<div className="photo">
+			<img src={props.source} alt="" />
+			<section className="info">
+				<div className="info__data">
+					<p>by</p>
+					<a href={props.authorLink}> {props.author}</a>
+				</div>
+				<div className="info__data">
+					<p>on</p>
+					<h3>{props.date.split("T")[0]}</h3>
+				</div>
+			</section>
+		</div>
+	);
 }
 
 export default Photo;
